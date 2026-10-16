@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["language", "events"],
+  "properties": {
+    "language": { "type": "string", "enum": ["id", "en"] },
+    "events": {
+      "type": "array", "minItems": 1, "maxItems": 10,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["sourceContext", "status", "question", "explanation", "confidence", "entry"],
+        "properties": {
+          "sourceContext": { "type": "string" },
+          "status": { "type": "string", "enum": ["draft", "needs_clarification"] },
+          "question": { "type": ["string", "null"] },
+          "explanation": { "type": "string" },
+          "confidence": { "type": "string", "enum": ["high", "medium", "low"] },
+          "entry": { "anyOf": [{ "type": "null" }, {
+            "type": "object", "additionalProperties": false,
+            "required": ["entryType", "entryDate", "amount", "description", "platform", "expenseCategory", "direction", "paymentMethod", "payableTarget", "supplierCode", "rentStartDate", "rentMonths"],
+            "properties": {
+              "entryType": { "type": "string", "enum": ["capital", "loan_proceeds", "marketplace_payout", "other_receivable", "supplier_deposit", "rent_prepayment", "fixed_asset", "operating_expense", "monthly_expense", "payable_payment"] },
+              "entryDate": { "type": "string" },
+              "amount": { "type": "number" },
+              "description": { "type": "string" },
+              "platform": { "type": "string", "enum": ["Shopee", "TikTok", ""] },
+              "expenseCategory": { "type": "string", "enum": ["salary", "utilities", "tax", "marketing", "petty_cash", "subscription", "travel", "other", ""] },
+              "direction": { "type": "string", "enum": ["addition", "deduction", ""] },
+              "paymentMethod": { "type": "string", "enum": ["cash", "loan", ""] },
+              "payableTarget": { "type": "string", "enum": ["supplier", "other", ""] },
+              "supplierCode": { "type": "string" },
+              "rentStartDate": { "type": "string" },
+              "rentMonths": { "type": "number" }
+            } }] }
+        }
+      }
+    }
+  }
+}

@@ -10,13 +10,13 @@ completed sales in the database, never typed in.
 
 | Section | Question it answers | Definition |
 |---|---|---|
-| **Revenue** card | How much did we sell? | Sum of net sales on completed sale lines in the selected period (cancelled lines count as 0) |
+| **Revenue** card | How much did we sell? | Sum of net sales on completed sale lines, online and in-store, dated by when the order was placed (cancelled and in-transit lines count as 0) |
 | **Completed orders** card | How many orders? | Count of distinct orders with at least one completed line |
 | **Average order value** card | How big is a typical order? | Revenue ÷ completed orders |
-| **Change badge** (e.g. −58.0%) | Is it up or down? | Change against the previous period of the same length, so a part-month is compared with a part-month |
-| **Unmapped item groups** card | Can we trust the numbers? | Marketplace listings that are not yet mapped to a product; "Needs review" until they are |
+| **Change badge** (e.g. −58.0%) | Is it up or down? | Change against the previous **full** period: this month so far against the whole previous month, this year so far against the whole previous year, last week against the week before |
+| **Unmapped item groups** card | Can we trust the numbers? | Distinct listings (shop + raw name + raw variant) on completed sales that have no product, brand or category yet; "Needs review" until they are mapped |
 | **Total revenue** chart | When did we sell? | Completed sales by day across all outlets, zoomable |
-| **Item mapping health** | How much revenue is mapped? | Share of completed sales whose listing maps to a product in the index library |
+| **Item mapping health** | How much of the sales history is mapped? | Share of completed sale **lines** whose listing maps to a product, brand and category in the index library |
 
 The **unmapped items** card is deliberately on the front page. Revenue is correct whether or not a listing is
 mapped, but item, brand and category analysis is only as good as the mapping, so the dashboard says how much of
@@ -26,9 +26,9 @@ it to trust.
 
 ![Revenue by period and contribution](images/outlet-by-brand.png)
 
-**Revenue by period and contribution** splits the same revenue by any one dimension (outlet, platform, brand,
-category, item) over daily, weekly or monthly periods. The example shows each outlet's revenue broken down by
-brand over the last two weeks.
+**Revenue by period and contribution** splits the same revenue by any one dimension (channel, platform, outlet,
+location, brand, category or province) over daily, weekly or monthly periods, optionally filtered to one outlet
+or location. The example shows each outlet's revenue broken down by brand over the last two weeks.
 
 ![Sales analytics: market leaders](images/sales-analytics.png)
 
@@ -38,10 +38,12 @@ item opens the same breakdown for that item alone, which answers "when and where
 
 ## Design choices
 
-- **One definition per metric, used everywhere.** Revenue on the dashboard, in analytics and in the income
-  statement comes from the same rule, so the pages never disagree.
-- **Period comparisons are like for like.** A month in progress is compared with the same number of days of
-  the previous month, not the whole month, which would always look like a drop.
-- **Customers are people, not orders.** "Most valuable customer" groups orders by customer, not by order.
-- **Trust signals sit next to the numbers** (mapping health, unmapped items, incomplete import weeks) instead
-  of on a separate admin page.
+- **One definition of revenue, two clocks.** The dashboard and analytics count a sale on the day the order was
+  placed (what staff think of as "sales that day"); the ledger books it on the day it completed (when it becomes
+  revenue in accounting). Totals agree exactly over time; a single month can differ by a percent or two.
+- **Period comparisons use full previous periods.** A month in progress is compared with the whole previous
+  month, so early in a month the badge usually shows a drop; the badge is read together with the period selector.
+- **Customers are people, not orders.** "Most valuable customer" groups in-store sales by customer name (marketplace
+  exports do not identify repeat buyers reliably).
+- **Trust signals sit next to the numbers:** mapping health and unmapped items on the dashboard, incomplete
+  import weeks on the sales page, instead of on a separate admin page.

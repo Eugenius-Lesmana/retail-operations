@@ -1,0 +1,21 @@
+{
+  "_note": "Read-only tools offered to the query assistant via function calling. The model picks tools and arguments; platform code runs them. period is one of: today, this_week, last_week, this_month, last_month, this_year, all_time.",
+  "tools": [
+    { "name": "get_sales_summary", "purpose": "Completed-sales revenue, units, orders and AOV for a period",
+      "parameters": { "period": "enum", "breakdown": ["none", "platform", "location", "outlet", "brand", "category", "province"], "limit": "1-15" } },
+    { "name": "get_top_items", "purpose": "Best-selling items or variants by revenue or units",
+      "parameters": { "period": "enum", "group_by": ["item", "variant"], "metric": ["revenue", "quantity"], "limit": "1-15" } },
+    { "name": "get_sales_trend", "purpose": "Completed sales bucketed over time",
+      "parameters": { "period": "enum", "granularity": ["day", "week", "month"] } },
+    { "name": "get_purchase_summary", "purpose": "Purchase totals, optionally by supplier, item, brand or category",
+      "parameters": { "period": "enum", "breakdown": ["none", "supplier", "item", "brand", "category"], "limit": "1-15" } },
+    { "name": "get_purchase_trend", "purpose": "Purchases bucketed over time",
+      "parameters": { "period": "enum", "granularity": ["day", "week", "month"] } },
+    { "name": "get_inventory_health", "purpose": "Current stock, stock value, low-stock and negative-stock variants",
+      "parameters": {} },
+    { "name": "get_financial_position", "purpose": "Current cash, inventory, deposits, receivables, payables, prepayments",
+      "parameters": {} },
+    { "name": "get_volume_forecast", "purpose": "Saved next-month unit forecast (units only); low-confidence results need explicit acknowledgement",
+      "parameters": { "scope": ["business", "variant"], "query": "item or variant name", "acknowledge_low_confidence": "boolean" } }
+  ]
+}

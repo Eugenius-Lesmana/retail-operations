@@ -2,7 +2,8 @@
 
 A sales, inventory, purchasing and accounting platform I designed for my family's multi-outlet retail business,
 which sells beauty products through physical stores and Shopee and TikTok shops (about 2,000 orders a month).
-It is in rollout: historical data is being imported and the design is being tuned for real-world volume.
+Staff and the owners use it day to day; historical data is still being imported and the design tuned for
+real-world volume.
 
 **This is a case study, not a code release.** The platform is private. Every screenshot comes from a demo copy
 running on **synthetic data**: brands, products, customers, suppliers and amounts are invented, and the company
@@ -13,11 +14,16 @@ name is blurred.
 ## The problem
 
 Sales lived in marketplace exports, purchases in supplier invoices, and stock in spreadsheets updated by hand.
+Almost every part of the operation had a data problem:
 
 - **Stock counts drifted.** Each shop names listings its own way, often as bundles ("pick any 3 colours"), so
   one physical product sold under dozens of names, and bundles did not reduce the right stock.
+- **Data was entered inconsistently.** Staff recorded the same thing in different ways, and purchase records did
+  not always match what was actually paid against the supplier's receipt.
 - **Invoices went missing,** so costs and supplier balances were incomplete.
 - **There was no accountant,** so there was no reliable view of profit, cash or what was owed.
+- **There was no way to monitor the business.** Answering "how did we do this month, and where?" meant
+  assembling spreadsheets by hand, so it rarely happened.
 
 ## What I built
 

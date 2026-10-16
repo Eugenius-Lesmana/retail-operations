@@ -65,6 +65,7 @@ flowchart LR
 | **Imports, stock and ledger** | Previewed imports that flag what cannot be mapped; stock from counts plus movements; double-entry postings; balance sheet, income statement, monthly close | [Data flows](docs/03-data-flows.md) |
 | **Workflows** | What staff do on each tab, step by step | [Workflows](docs/06-workflows.md) |
 | **AI assistants** | A read-only assistant that answers business questions, and two that turn staff messages into draft entries for review | [AI assistants](docs/04-ai-assistants.md) |
+| **Logic chains** | The core rules as diagrams and plain steps, each linked to its code excerpt | [Logic chains](docs/08-logic-chains.md) |
 | **Build evidence** | Commit history, code volume, reconciliation checks, and a recording of the running demo | [Build evidence](docs/07-build-evidence.md) |
 
 ## How it is built
@@ -102,6 +103,7 @@ docs/04-ai-assistants.md    how the three assistants work and why they cannot ch
 docs/05-product-mapping.md  how listing names become products and bundles
 docs/06-workflows.md        what each tab is for and how staff use it
 docs/07-build-evidence.md   commit history, code volume, reconciliation checks, demo recording
+docs/08-logic-chains.md     the core rules as diagrams and plain steps, linked to the code excerpts
 snippets/                   schema overview and short SQL/JSON excerpts from the real system
 docs/images/                screenshots from the demo copy (synthetic data, company name blurred)
 ```
